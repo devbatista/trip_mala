@@ -6,5 +6,8 @@ class User < ApplicationRecord
          :jwt_authenticatable, 
          jwt_revocation_strategy: JwtDenylist
 
-  validates :email, uniqueness: true
+  validates :email,
+            presence: true,
+            uniqueness: {message: "já está em uso. Por favor, use outro email"},
+            format: {with: URI::MailTo::EMAIL_REGEXP}
 end
