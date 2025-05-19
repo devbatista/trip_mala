@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       registration: 'signup'
     },
     controllers: {
-      sessions: 'user/sessions',
-      registrations: 'user/registrations'
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
     }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
