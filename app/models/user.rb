@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :jwt_authenticatable, 
          jwt_revocation_strategy: JwtDenylist
 
+  has_many :trip_checklists, dependent: :destroy
+
   validates :email,
             presence: true,
             uniqueness: {message: "is already in use. Please use another email"},

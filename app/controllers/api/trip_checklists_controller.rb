@@ -12,7 +12,7 @@ class Api::TripChecklistsController < ApplicationController
   end
 
   def create
-    @trip_checklist = current_user.trip_checklist.new(trip_checklist_params)
+    @trip_checklist = current_user.trip_checklists.new(trip_checklist_params)
     if @trip_checklist.save
       render json: @trip_checklist, status: :created
     else
@@ -34,9 +34,9 @@ class Api::TripChecklistsController < ApplicationController
   end
 
   private
-  
+
     def set_trip_checklist
-      @trip_checklist = current_user.trip_checklist.find(params[:id])
+      @trip_checklist = current_user.trip_checklists.find(params[:id])
     end
 
     def trip_checklist_params
