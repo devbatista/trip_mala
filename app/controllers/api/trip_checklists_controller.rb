@@ -1,5 +1,5 @@
 class Api::TripChecklistsController < ApplicationController
-  before_action :authentication_user!
+  before_action :authenticate_user!
   before_action :set_trip_checklist, except: :create
 
   def index
@@ -34,6 +34,7 @@ class Api::TripChecklistsController < ApplicationController
   end
 
   private
+  
     def set_trip_checklist
       @trip_checklist = current_user.trip_checklist.find(params[:id])
     end
