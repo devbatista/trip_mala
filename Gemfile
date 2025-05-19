@@ -48,3 +48,6 @@ end
 # Authentication
 gem "devise"
 gem "devise-jwt"
+
+# Serialization
+gem "active_model_serializers"
