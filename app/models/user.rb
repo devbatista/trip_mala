@@ -8,6 +8,6 @@ class User < ApplicationRecord
 
   validates :email,
             presence: true,
-            uniqueness: {message: "já está em uso. Por favor, use outro email"},
+            uniqueness: {message: "is already in use. Please use another email"},
             format: {with: URI::MailTo::EMAIL_REGEXP}
 end

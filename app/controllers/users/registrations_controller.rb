@@ -4,13 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:create]
 
   def create
-    user = User.new(sign_up_params)
-
-    if user.save
-      render json: {message: 'User created successfully'}
-    else
-      render json: {message: user.errors.full_messages}, status: :unprocessable_entity
-    end
+    user = User.create!(sign_up_params)
+    render json: {message: 'User created successfully', user: user}, status: :created
   end
 
   protected
