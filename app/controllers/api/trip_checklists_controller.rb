@@ -8,7 +8,7 @@ class Api::TripChecklistsController < ApplicationController
   end
 
   def show
-    render json: @trip_checklist, include: :checklist_items, status: :ok
+    render json: @trip_checklist, status: :ok
   end
 
   def create
