@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_20_022643) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_19_232913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
 
   create_table "checklist_items", force: :cascade do |t|
     t.string "name"
