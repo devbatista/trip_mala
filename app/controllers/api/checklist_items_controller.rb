@@ -30,6 +30,16 @@ class Api::ChecklistItemsController < ApplicationController
     head :no_content
   end
 
+  def toggle_checked
+    checklist_item = ChecklistItem.joins(:trip_checklist)
+                                   .where(trip_checklists: {user_id: current_user.id})
+                                   .find(params[:id])
+
+    checklist_item.update(checked: !checklist_item.checked)
+
+    render json: checklist_item, status: :ok
+  end
+
   private
 
     def set_trip_checklist

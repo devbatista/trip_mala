@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
   namespace :api do
     resources :trip_checklists do
-      resources :checklist_items, only: [:index, :create, :update, :destroy]
+      resources :checklist_items, only: [:index, :create, :update, :destroy] do
+        member do
+          put :check, to: 'checklist_items#toggle_checked'
+        end
+      end
     end
   end
 
