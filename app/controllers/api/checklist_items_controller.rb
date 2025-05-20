@@ -1,4 +1,4 @@
-class Api::ChecklistItemsController < ApplicationController
+class Api::ChecklistItemsController < Api::BaseController
   before_action :authenticate_user!
   before_action :set_trip_checklist
   before_action :set_checklist_item, only: [:update, :destroy]

@@ -1,4 +1,4 @@
-class Api::TripChecklistsController < ApplicationController
+class Api::TripChecklistsController < Api::BaseController
   before_action :authenticate_user!
   before_action :set_trip_checklist, except: [:create, :index]
 
