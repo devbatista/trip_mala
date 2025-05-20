@@ -4,6 +4,8 @@ class Api::ChecklistItemsController < Api::BaseController
 
   def index
     @checklist_items = @trip_checklist.checklist_items
+    @checklist_items = @checklist_items.where(category_id: params[:category_id]) if params[:category_id].present?
+
     render json: @checklist_items, status: :ok
   end
 
@@ -17,6 +19,7 @@ class Api::ChecklistItemsController < Api::BaseController
   end
 
   def update
+    binding.pry
     if @checklist_item.update(checklist_item_params)
       render json: @checklist_item, status: :ok
     else
