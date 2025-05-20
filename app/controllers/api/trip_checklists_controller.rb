@@ -1,6 +1,6 @@
 class Api::TripChecklistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip_checklist, except: :create
+  before_action :set_trip_checklist, except: [:create, :index]
 
   def index
     @trip_checklists = current_user.trip_checklists
