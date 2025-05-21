@@ -23,7 +23,12 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :categories, only: [:index, :create, :update, :destroy]
+
+    get '/categories', to: 'categories#index'
+
+    namespace :admin do
+      resources :categories, only: [:index, :create, :update, :destroy]
+    end
   end
 
   get '/profile', to: 'profile#show'
