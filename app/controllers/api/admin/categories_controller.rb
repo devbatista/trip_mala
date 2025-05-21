@@ -1,7 +1,6 @@
-class Api::Admin::CategoriesController < ApplicationController
-  before_action :authenticate_user!
+class Api::Admin::CategoriesController < Api::BaseController
   before_action :authorize_admin!
-  before_action :set_category
+  before_action :set_category, only: [:update, :destroy]
   
   def index
     render json: Category.all, status: :ok
@@ -17,7 +16,7 @@ class Api::Admin::CategoriesController < ApplicationController
   end
 
   def update
-    if @categoy.update(category_params)
+    if @category.update(category_params)
       render json: @category, status: :ok
     else
       render json: {errors: category.errors.full_messages}, status: :unprocessable_entity

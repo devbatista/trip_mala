@@ -1,5 +1,5 @@
 class Api::CategoriesController < Api::BaseController
   def index
-    @categories = Category.all
+    render json: Category.all, status: :ok
   end
 end
