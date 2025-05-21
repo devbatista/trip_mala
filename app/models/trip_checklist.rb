@@ -3,5 +3,5 @@ class TripChecklist < ApplicationRecord
   has_many :checklist_items, dependent: :destroy
   has_many :categories, dependent: :destroy
 
-  validates :name, presence: true
+  validates :title, presence: true
 end
