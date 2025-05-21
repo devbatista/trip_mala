@@ -19,7 +19,6 @@ class Api::ChecklistItemsController < Api::BaseController
   end
 
   def update
-    binding.pry
     if @checklist_item.update(checklist_item_params)
       render json: @checklist_item, status: :ok
     else
@@ -53,6 +52,6 @@ class Api::ChecklistItemsController < Api::BaseController
     end
     
     def checklist_item_params
-      params.require(:checklist_item).permit(:name, :checked)
+      params.require(:checklist_item).permit(:name, :checked, :category_id)
     end
 end
