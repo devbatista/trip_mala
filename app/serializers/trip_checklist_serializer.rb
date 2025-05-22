@@ -1,5 +1,5 @@
 class TripChecklistSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :title
   
   has_many :checklist_items
 end
