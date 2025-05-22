@@ -11,7 +11,10 @@ class Api::TripChecklistsController < Api::BaseController
   end
 
   def create
-    @trip_checklist = current_user.trip_checklists.new(trip_checklist_params)
+    @trip_checklist = current_user
+                      .trip_lists.find(params[:trip_list_id])
+                      .trip_checklists.new(trip_checklist_params)
+
     if @trip_checklist.save
       render json: @trip_checklist, status: :created
     else
@@ -35,10 +38,12 @@ class Api::TripChecklistsController < Api::BaseController
   private
 
     def set_trip_checklist
-      @trip_checklist = current_user.trip_checklists.find(params[:id])
+      @trip_checklist = current_user
+                        .trip_lists.find(params[:trip_list_id])
+                        .trip_checklists.find(params[:id])
     end
 
     def trip_checklist_params
-      params.require(:trip_checklist).permit(:name)
+      params.require(:trip_checklist).permit(:title).merge!(user_id: current_user.id)
     end
 end
