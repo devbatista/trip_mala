@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_22_124908) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_22_131202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,8 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_124908) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trip_lists_id", null: false
-    t.index ["trip_lists_id"], name: "index_trip_checklists_on_trip_lists_id"
+    t.bigint "trip_list_id", null: false
+    t.index ["trip_list_id"], name: "index_trip_checklists_on_trip_list_id"
     t.index ["user_id"], name: "index_trip_checklists_on_user_id"
   end
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_124908) do
   add_foreign_key "checklist_items", "trip_checklists"
   add_foreign_key "items", "trip_lists"
   add_foreign_key "shared_lists", "trip_lists"
-  add_foreign_key "trip_checklists", "trip_lists", column: "trip_lists_id"
+  add_foreign_key "trip_checklists", "trip_lists"
   add_foreign_key "trip_checklists", "users"
   add_foreign_key "trip_lists", "users"
 end
