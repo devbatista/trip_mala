@@ -4,4 +4,6 @@ class ChecklistItem < ApplicationRecord
 
   validates :name, presence: true
   validates :checked, inclusion: {in: [true, false]}
+
+  attribute :checked, :boolean, default: false
 end

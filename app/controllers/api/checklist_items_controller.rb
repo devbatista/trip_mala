@@ -52,6 +52,6 @@ class Api::ChecklistItemsController < Api::BaseController
     end
     
     def checklist_item_params
-      params.require(:checklist_item).permit(:name, :checked, :category_id)
+      params.require(:checklist_item).permit(:name, :category_id)
     end
 end
