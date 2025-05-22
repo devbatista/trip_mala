@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_22_131202) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_22_181652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,8 +28,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_131202) do
     t.bigint "trip_checklist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_checklist_items_on_category_id"
     t.index ["trip_checklist_id"], name: "index_checklist_items_on_trip_checklist_id"
   end
 
@@ -65,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_131202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "trip_list_id", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_trip_checklists_on_category_id"
     t.index ["trip_list_id"], name: "index_trip_checklists_on_trip_list_id"
     t.index ["user_id"], name: "index_trip_checklists_on_user_id"
   end
@@ -95,10 +95,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_131202) do
   end
 
   add_foreign_key "categories", "trip_checklists"
-  add_foreign_key "checklist_items", "categories"
   add_foreign_key "checklist_items", "trip_checklists"
   add_foreign_key "items", "trip_lists"
   add_foreign_key "shared_lists", "trip_lists"
+  add_foreign_key "trip_checklists", "categories"
   add_foreign_key "trip_checklists", "trip_lists"
   add_foreign_key "trip_checklists", "users"
   add_foreign_key "trip_lists", "users"
