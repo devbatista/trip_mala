@@ -7,6 +7,7 @@ class User < ApplicationRecord
          jwt_revocation_strategy: JwtDenylist
 
   has_many :trip_checklists, dependent: :destroy
+  has_many :trip_lists, dependent: :destroy
 
   validates :email,
             presence: true,
