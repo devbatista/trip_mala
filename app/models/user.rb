@@ -14,5 +14,5 @@ class User < ApplicationRecord
             uniqueness: {message: "is already in use. Please use another email"},
             format: {with: URI::MailTo::EMAIL_REGEXP}
 
-  validates :password, presence: true, length: {minimum: 6}
+  validates :password, presence: true, length: {minimum: 6}, on: :create
 end
