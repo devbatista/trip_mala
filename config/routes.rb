@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :trip_lists
+
     get '/categories', to: 'categories#index'
 
     namespace :admin do
