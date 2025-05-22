@@ -1,4 +1,4 @@
-class TripList < ApplicationRecord
+class Trip < ApplicationRecord
   belongs_to :user
 
   has_many :trip_checklists, dependent: :destroy

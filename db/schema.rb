@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_22_182218) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_22_182440) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,12 +40,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_182218) do
   end
 
   create_table "shared_lists", force: :cascade do |t|
-    t.bigint "trip_list_id", null: false
+    t.bigint "trip_id", null: false
     t.string "email"
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_list_id"], name: "index_shared_lists_on_trip_list_id"
+    t.index ["trip_id"], name: "index_shared_lists_on_trip_id"
   end
 
   create_table "trip_checklists", force: :cascade do |t|
@@ -53,14 +53,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_182218) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trip_list_id", null: false
+    t.bigint "trip_id", null: false
     t.bigint "category_id"
     t.index ["category_id"], name: "index_trip_checklists_on_category_id"
-    t.index ["trip_list_id"], name: "index_trip_checklists_on_trip_list_id"
+    t.index ["trip_id"], name: "index_trip_checklists_on_trip_id"
     t.index ["user_id"], name: "index_trip_checklists_on_user_id"
   end
 
-  create_table "trip_lists", force: :cascade do |t|
+  create_table "trips", force: :cascade do |t|
     t.string "title"
     t.string "destination"
     t.date "departure_date"
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_182218) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_trip_lists_on_user_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,9 +87,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_22_182218) do
 
   add_foreign_key "categories", "trip_checklists"
   add_foreign_key "checklist_items", "trip_checklists"
-  add_foreign_key "shared_lists", "trip_lists"
+  add_foreign_key "shared_lists", "trips"
+  add_foreign_key "shared_lists", "trips"
   add_foreign_key "trip_checklists", "categories"
-  add_foreign_key "trip_checklists", "trip_lists"
+  add_foreign_key "trip_checklists", "trips"
+  add_foreign_key "trip_checklists", "trips"
   add_foreign_key "trip_checklists", "users"
-  add_foreign_key "trip_lists", "users"
+  add_foreign_key "trips", "users"
 end

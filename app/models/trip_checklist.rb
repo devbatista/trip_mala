@@ -1,6 +1,6 @@
 class TripChecklist < ApplicationRecord
   belongs_to :user
-  belongs_to :trip_list
+  belongs_to :trip
   belongs_to :category, optional: true
 
   has_many :checklist_items, dependent: :destroy

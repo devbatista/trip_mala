@@ -1,3 +1,3 @@
 class SharedList < ApplicationRecord
-  belongs_to :trip_list
+  belongs_to :trip
 end
