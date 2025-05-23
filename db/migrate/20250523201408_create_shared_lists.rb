@@ -6,6 +6,5 @@ class CreateSharedLists < ActiveRecord::Migration[7.1]
       t.string :token
       t.timestamps
     end
-    add_index :shared_lists, :trip_id
   end
 end

@@ -6,6 +6,5 @@ class CreateChecklistItems < ActiveRecord::Migration[7.1]
       t.references :trip_checklist, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :checklist_items, :trip_checklist_id
   end
 end
