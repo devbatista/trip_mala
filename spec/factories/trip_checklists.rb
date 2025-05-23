@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :trip_checklist do
-    name { "MyString" }
-    user { nil }
+    title { "MyString" }
+    association :user
+    association :trip
   end
 end

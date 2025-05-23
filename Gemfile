@@ -48,6 +48,8 @@ group :development, :test do
   gem "pry"
   gem "pry-rails"
   gem "pry-byebug"
+
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
