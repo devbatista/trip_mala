@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :trip_list do
+  factory :trip do
     title { "MyString" }
     destination { "MyString" }
     departure_date { "2025-05-19" }
