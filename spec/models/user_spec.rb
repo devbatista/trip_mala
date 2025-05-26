@@ -21,4 +21,9 @@ RSpec.describe User, type: :model do
     user = build(:user, email: nil)
     expect(user).to_not(be_valid)
   end
+
+  it 'is invalid with short passowrd' do
+    user = build(:user, password: '123')
+    expect(user).to_not be_valid
+  end
 end
