@@ -37,4 +37,9 @@ RSpec.describe User, type: :model do
     user = build(:user, email: 'invalid_email')
     expect(user).to_not(be_valid)
   end
+
+  it 'can be admin' do
+    user = build(:user, admin: true)
+    expect(user.admin).to(be(true))
+  end
 end
