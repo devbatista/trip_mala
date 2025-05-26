@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates :email,
             presence: true,
-            uniqueness: {message: "is already in use. Please use another email"},
+            uniqueness: { case_sensitive: false },
             format: {with: URI::MailTo::EMAIL_REGEXP}
 
   validates :password, presence: true, length: {minimum: 6}, on: :create
