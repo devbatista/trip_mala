@@ -24,6 +24,12 @@ RSpec.describe User, type: :model do
 
   it 'is invalid with short passowrd' do
     user = build(:user, password: '123')
-    expect(user).to_not be_valid
+    expect(user).to_not(be_valid)
+  end
+
+  it 'is invalid with duplicate email (case insensitive)' do
+    create(:user, email: 'teste@teste.com')
+    user = build(:user, email: 'TESTE@teste.com')
+    expect(user).to_not(be_valid)
   end
 end
