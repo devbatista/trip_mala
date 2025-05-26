@@ -32,4 +32,9 @@ RSpec.describe User, type: :model do
     user = build(:user, email: 'TESTE@teste.com')
     expect(user).to_not(be_valid)
   end
+
+  it 'is invalid with incorret email format' do
+    user = build(:user, email: 'invalid_email')
+    expect(user).to_not(be_valid)
+  end
 end
