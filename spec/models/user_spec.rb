@@ -42,4 +42,9 @@ RSpec.describe User, type: :model do
     user = build(:user, admin: true)
     expect(user.admin).to(be(true))
   end
+
+  it 'is not admin by default' do
+    user = build(:user)
+    expect(user.admin).to(be_falsey)
+  end
 end
